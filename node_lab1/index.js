@@ -1,6 +1,8 @@
 import dotenv from 'dotenv';
 import express from 'express';
 import greeting from './greeting';
+import contactsRouter from './api/contacts';
+import hackernewsRouter from './api/hackernews';
 
 dotenv.config();
 
@@ -8,6 +10,8 @@ const app = express();
 
 const port = process.env.PORT;
 
+app.use('/api/contacts', contactsRouter);
+app.use('/api/hackernews', hackernewsRouter);
 app.use(express.static('public'));
 
 // add route for /greeting
